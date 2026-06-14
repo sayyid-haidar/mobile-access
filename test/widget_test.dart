@@ -42,6 +42,8 @@ void main() {
     expect(find.text('Open Door'), findsOneWidget);
     expect(find.text('Terkunci'), findsOneWidget);
 
+    await tester.ensureVisible(find.widgetWithText(FilledButton, 'Open Door'));
+    await tester.pumpAndSettle();
     await tester.tap(find.widgetWithText(FilledButton, 'Open Door'));
     await tester.pumpAndSettle();
 

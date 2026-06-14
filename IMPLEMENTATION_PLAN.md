@@ -210,6 +210,8 @@ Definition of Done:
 
 ### Fase 6: Visual Polish dan Fidelity Review
 
+Status: selesai.
+
 Tujuan:
 
 - Memastikan hasil implementasi tidak melenceng dari PDF.
@@ -224,10 +226,16 @@ Task:
 
 Definition of Done:
 
-- Checklist visual di bagian bawah dokumen terpenuhi.
-- Tidak ada overflow pada ukuran mobile.
-- Tidak ada elemen tambahan yang tidak ada di referensi.
-- Interaksi dummy utama berjalan.
+- [x] Checklist visual di bagian bawah dokumen terpenuhi.
+- [x] Tidak ada overflow pada ukuran mobile.
+- [x] Tidak ada elemen tambahan yang tidak ada di referensi.
+- [x] Interaksi dummy utama berjalan.
+- [x] Referensi PDF diekstrak dan dibandingkan ulang untuk Page 1, Page 2, dan Page 3.
+- [x] Detail status card dipoles agar memakai stage RFID seperti referensi.
+- [x] Test mobile viewport 390x844 tersedia untuk Login, Pintu Saya, dan Detail Pintu.
+- [x] Screenshot Chrome headless dicoba, tetapi hasilnya blank putih di environment ini; verifikasi viewport otomatis ditutup lewat widget test 390x844.
+- [x] `flutter analyze` sukses.
+- [x] `flutter test` sukses.
 
 ### Fase 7: Cleanup Ringan
 

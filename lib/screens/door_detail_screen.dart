@@ -189,13 +189,7 @@ class _DoorStatusCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: Image.asset(
-              'assets/images/rfid_reader.png',
-              width: 94,
-              fit: BoxFit.contain,
-            ),
-          ),
+          const _ReaderStage(),
           const SizedBox(height: 20),
           Text(
             'Status pintu',
@@ -229,6 +223,28 @@ class _DoorStatusCard extends StatelessWidget {
             style: textTheme.bodyMedium?.copyWith(fontSize: 15),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ReaderStage extends StatelessWidget {
+  const _ReaderStage();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 132,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: GarpitColors.background,
+        borderRadius: BorderRadius.circular(28),
+      ),
+      child: Image.asset(
+        'assets/images/rfid_reader.png',
+        width: 88,
+        fit: BoxFit.contain,
       ),
     );
   }
