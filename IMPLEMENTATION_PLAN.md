@@ -12,6 +12,243 @@ Dokumen ini merangkum rencana implementasi tampilan dan interaksi awal berdasark
 - Membuat komponen visual reusable untuk card, badge, tombol, input, bottom navigation, dan ilustrasi perangkat.
 - Menjaga layout nyaman di Android dan tetap layak dibuka di Web dengan kode Flutter yang sama.
 
+## Pembagian Fase Implementasi
+
+Supaya pekerjaan tidak terlalu berat, implementasi UI dibagi menjadi fase kecil. Setiap fase punya hasil yang bisa dicek langsung sebelum lanjut ke fase berikutnya.
+
+### Fase 0: Asset dan Referensi
+
+Status: selesai.
+
+Tujuan:
+
+- Menyiapkan asset visual yang dibutuhkan sebelum coding screen.
+- Memastikan referensi PDF dan asset final tidak berubah diam-diam.
+
+Task:
+
+- Pastikan `GARPIT - Mobile App Screens.pdf` tetap menjadi referensi utama.
+- Gunakan `assets/images/access_controller.png` untuk controller besar.
+- Gunakan `assets/images/rfid_reader.png` untuk RFID reader.
+- Gunakan `assets/images/garpit_wordmark.png` hanya jika wordmark image lebih cocok daripada teks.
+- Pastikan `pubspec.yaml` sudah mendaftarkan `assets/images/`.
+
+Definition of Done:
+
+- [x] Semua asset bisa dipanggil dengan `Image.asset`.
+- [x] Tidak ada dependency SVG tambahan yang wajib untuk fase UI awal.
+- [x] Asset device terlihat bersih dan tidak seperti crop PDF mentah.
+- [x] `flutter pub get` sukses setelah asset didaftarkan.
+- [x] Referensi PDF tersedia di root project.
+
+### Fase 1: Fondasi App dan Theme
+
+Status: selesai.
+
+Tujuan:
+
+- Mengganti template counter app menjadi fondasi GARPIT.
+- Menyiapkan theme, warna, typography, dan layout wrapper untuk mobile plus web.
+
+Task:
+
+- Bersihkan `lib/main.dart` dari counter app.
+- Buat `GarpitApp`.
+- Buat `app_theme.dart` berisi warna dan text style utama.
+- Buat mobile-centered wrapper untuk Web dengan max width sekitar 430-480 px.
+- Siapkan struktur folder `app/`, `screens/`, `widgets/`, dan `models/`.
+
+Interaksi:
+
+- Belum perlu navigasi penuh.
+- App boleh langsung menampilkan placeholder screen.
+
+Definition of Done:
+
+- [x] App berjalan di Flutter.
+- [x] Background, max width Web, dan SafeArea sudah siap.
+- [x] Tidak ada overflow pada placeholder mobile 390x844.
+- [x] `flutter analyze` sukses.
+- [x] `flutter test` sukses.
+
+### Fase 2: Komponen Reusable Dasar
+
+Status: selesai.
+
+Tujuan:
+
+- Membuat building block visual sebelum masuk ke screen lengkap.
+
+Task:
+
+- Buat `GarpitButton` untuk primary dan secondary button.
+- Buat `GarpitTextField` untuk input email/password.
+- Buat `GarpitBadge` untuk status pill.
+- Buat widget image device yang memakai asset controller dan RFID reader.
+- Buat helper card/surface style bila dibutuhkan.
+
+Interaksi:
+
+- Button harus punya tap feedback.
+- Text field harus bisa menerima input.
+
+Definition of Done:
+
+- [x] Komponen bisa dipakai ulang di semua screen.
+- [x] Styling sudah mengikuti radius, border, warna, dan typography PDF.
+- [x] Komponen tidak menambah elemen visual di luar referensi.
+- [x] `GarpitButton` tersedia untuk primary dan secondary button.
+- [x] `GarpitTextField` tersedia untuk input email/password.
+- [x] `GarpitBadge` tersedia untuk status pill.
+- [x] `AccessDeviceIllustration` tersedia dan memakai asset device.
+- [x] `flutter analyze` sukses.
+- [x] `flutter test` sukses.
+
+### Fase 3: Login Screen
+
+Tujuan:
+
+- Mengimplementasikan screen pertama sesuai Page 1 PDF.
+
+Task:
+
+- Buat `LoginScreen`.
+- Susun brand, tagline, card ilustrasi, section `Masuk`, form, link lupa password, dan tombol masuk.
+- Gunakan `SingleChildScrollView` agar keyboard tidak menutup form.
+- Gunakan asset controller dan RFID reader di card ilustrasi.
+
+Interaksi:
+
+- Email/password bisa diisi.
+- Tap `Masuk` validasi kosong secara lokal.
+- Jika valid, masuk ke `Pintu Saya`.
+- Tap `Lupa password?` tampilkan snackbar placeholder.
+
+Definition of Done:
+
+- Login screen mirip Page 1 PDF.
+- Form tidak overflow di tinggi 844.
+- Flow login dummy bisa lanjut ke dashboard.
+
+### Fase 4: Pintu Saya Screen
+
+Tujuan:
+
+- Mengimplementasikan dashboard daftar pintu sesuai Page 2 PDF.
+
+Task:
+
+- Buat model dummy `DoorItem`.
+- Buat `DoorsScreen`.
+- Buat `AccessPassCard`.
+- Buat `DoorListItem`.
+- Buat `GarpitBottomNav`.
+- Isi data dummy untuk `Main Entrance`, `Office Door`, dan `Meeting Room`.
+
+Interaksi:
+
+- Tap `Main Entrance` membuka detail.
+- Tab selain `Doors` menampilkan snackbar placeholder.
+- Avatar `S` boleh menampilkan snackbar placeholder.
+- `Main Entrance` tampil selected dengan border teal.
+
+Definition of Done:
+
+- Screen `Pintu Saya` mirip Page 2 PDF.
+- Bottom navigation fixed di bawah.
+- List pintu bisa ditap tanpa error.
+- Tidak ada API/backend.
+
+### Fase 5: Detail Pintu Screen
+
+Tujuan:
+
+- Mengimplementasikan detail pintu sesuai Page 3 PDF.
+
+Task:
+
+- Buat `DoorDetailScreen`.
+- Buat status card pintu dengan RFID reader.
+- Buat section aksi cepat.
+- Buat segmented duration selector untuk `5m`, `15m`, `30m`, `Custom`.
+- Buat card `Izin akses Anda`.
+
+Interaksi:
+
+- Tap back kembali ke `Pintu Saya`.
+- Tap `Open Door` mengubah status lokal menjadi `Terbuka`.
+- Tap `Lock Door` mengubah status lokal menjadi `Terkunci`.
+- Tap durasi mengubah selected duration.
+- Tap `Custom` menampilkan snackbar atau bottom sheet placeholder.
+
+Definition of Done:
+
+- Detail screen mirip Page 3 PDF.
+- Status lokal berubah tanpa API.
+- Durasi aktif terlihat jelas.
+- Layout tetap bisa discroll jika tinggi layar kecil.
+
+### Fase 6: Visual Polish dan Fidelity Review
+
+Tujuan:
+
+- Memastikan hasil implementasi tidak melenceng dari PDF.
+
+Task:
+
+- Jalankan app di Web atau emulator.
+- Ambil screenshot ukuran 390x844.
+- Bandingkan dengan 3 halaman PDF.
+- Rapikan spacing, radius, typography, shadow, dan posisi asset.
+- Pastikan Web tetap mobile-centered, bukan layout desktop baru.
+
+Definition of Done:
+
+- Checklist visual di bagian bawah dokumen terpenuhi.
+- Tidak ada overflow pada ukuran mobile.
+- Tidak ada elemen tambahan yang tidak ada di referensi.
+- Interaksi dummy utama berjalan.
+
+### Fase 7: Cleanup Ringan
+
+Tujuan:
+
+- Merapikan hasil UI agar siap untuk fase API nanti.
+
+Task:
+
+- Jalankan `flutter analyze`.
+- Jalankan test bawaan atau update test bila template counter sudah dihapus.
+- Hapus dead code dan komentar template Flutter.
+- Pastikan nama file dan widget konsisten.
+
+Definition of Done:
+
+- Analyze tidak menunjukkan error.
+- Project tetap bisa jalan.
+- UI state dummy cukup jelas untuk nanti diganti API.
+
+## Reference Fidelity Rules
+
+Implementasi UI harus mengikuti `GARPIT - Mobile App Screens.pdf` sebagai sumber utama. Kalau ada keputusan desain yang tidak tertulis di dokumen ini, prioritasnya adalah meniru PDF, bukan membuat gaya baru.
+
+Yang harus dijaga:
+
+- Komposisi screen mengikuti referensi 390x844.
+- Urutan section, teks, dan hierarki visual tidak diubah.
+- Warna utama tetap putih, hitam, abu-abu, dan teal sesuai referensi.
+- Tidak menambahkan fitur visual baru yang tidak ada di PDF, seperti ilustrasi lain, gradient, onboarding tambahan, drawer, atau animasi dekoratif.
+- Tidak mengganti bottom navigation dengan pola navigasi lain.
+- Tidak mengganti bentuk card besar, badge pill, input rounded, dan tombol full-width.
+- Web hanya membungkus tampilan mobile agar rapi; bukan membuat layout desktop baru.
+- Copywriting mengikuti PDF, termasuk bahasa Indonesia pada label dan deskripsi.
+
+Pengecualian yang boleh:
+
+- Ukuran sedikit menyesuaikan jika dibutuhkan untuk menghindari overflow pada perangkat kecil.
+- Ilustrasi perangkat boleh dibuat ulang dengan Flutter shape selama proporsi, warna, dan kesan visualnya tetap sama.
+- Icon bottom navigation boleh memakai icon Flutter yang paling mendekati jika detail icon PDF tidak tersedia.
+
 ## Prinsip Tampilan
 
 - Desain mengikuti arah visual PDF: putih, bersih, tegas, dengan aksen teal.
@@ -76,6 +313,52 @@ Spacing:
 - Jarak antar card/list item: 16-20.
 - Radius card utama: 28-36.
 - Radius input/button: 16-20.
+
+## Asset yang Perlu Disiapkan
+
+Untuk fase UI awal, asset paling penting adalah visual perangkat di PDF:
+
+- Access control unit/controller besar pada screen Login.
+- RFID/card reader kecil pada screen Login, Pintu Saya, dan Detail Pintu.
+- Logo/wordmark `GARPIT` jika ada versi resmi.
+
+Rekomendasi:
+
+- Jika ingin hasil paling dekat dengan PDF, export visual perangkat dari Figma sebagai `SVG` atau `PNG` transparan.
+- Untuk Flutter, `PNG` transparan resolusi 2x/3x paling aman tanpa dependency tambahan.
+- Jika memakai `SVG`, perlu menambahkan package seperti `flutter_svg`, tetapi itu bisa ditunda sampai asset final tersedia.
+- Kalau asset final belum tersedia, perangkat bisa dibuat sementara dengan Flutter shape murni. Ini cukup untuk prototype UI, tetapi detailnya tidak akan 100% sama dengan referensi.
+
+Nama file yang disarankan:
+
+```text
+assets/images/access_controller.png
+assets/images/rfid_reader.png
+assets/images/garpit_wordmark.png
+```
+
+Status asset saat ini:
+
+- `assets/images/access_controller.svg` sudah dibuat ulang sebagai source vector.
+- `assets/images/access_controller.png` sudah dirender ulang dari SVG untuk pemakaian Flutter tanpa dependency tambahan.
+- `assets/images/rfid_reader.svg` sudah dibuat ulang sebagai source vector.
+- `assets/images/rfid_reader.png` sudah dirender ulang dari SVG untuk pemakaian Flutter tanpa dependency tambahan.
+- `assets/images/logo.svg` sudah ada di project sebagai source logo/wordmark.
+- `assets/images/garpit_wordmark.png` sudah disiapkan dari `logo.svg` agar bisa langsung dipakai dengan `Image.asset` tanpa dependency SVG.
+
+Konfigurasi `pubspec.yaml` nanti:
+
+```yaml
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+```
+
+Asset yang tidak wajib disiapkan sekarang:
+
+- Icon bottom navigation, karena bisa memakai `Icons.meeting_room`, `Icons.badge`, `Icons.history`, dan `Icons.person_outline` dari Material Icons.
+- Status icon kecil di list pintu, karena di PDF tampil sebagai kotak rounded lembut dan bisa dibuat dari Flutter `Container`.
 
 ## Screen 1: Login
 
@@ -195,13 +478,13 @@ State lokal:
 
 ### `AccessDeviceIllustration`
 
-Ilustrasi dibuat dengan Flutter widget murni dulu, bukan asset bitmap:
+Ilustrasi memakai asset PNG yang sudah dibuat ulang dari SVG:
 
-- Bentuk controller dan reader memakai `Container`, `BoxDecoration`, shadow, dan rounded corners.
-- Aksen teal memakai bar kecil.
-- Simbol NFC bisa dibuat dari text sederhana atau icon custom ringan.
+- `assets/images/access_controller.png` untuk controller besar.
+- `assets/images/rfid_reader.png` untuk RFID reader.
+- Penempatan, ukuran, dan layering disesuaikan per screen agar tetap mirip PDF.
 
-Keuntungan: tidak perlu asset eksternal, tampil tajam di Android dan Web.
+Catatan: source vector tetap disimpan di `assets/images/access_controller.svg` dan `assets/images/rfid_reader.svg` untuk revisi visual berikutnya.
 
 ### `GarpitButton`
 
@@ -281,16 +564,18 @@ Web:
 
 ## Urutan Implementasi
 
-1. Bersihkan template counter app di `lib/main.dart`.
-2. Tambahkan theme dan struktur app dasar.
-3. Implement komponen reusable visual.
-4. Implement `LoginScreen`.
-5. Implement `DoorsScreen` dengan data dummy.
-6. Implement `DoorDetailScreen` dengan state lokal.
-7. Tambahkan navigasi antar screen.
-8. Cek layout di Chrome untuk target Web.
-9. Cek layout di Android/emulator jika device tersedia.
-10. Rapikan spacing, radius, dan teks agar mendekati PDF.
+Ikuti pembagian fase di atas agar pekerjaan tetap ringan dan mudah direview:
+
+1. Fase 0: Asset dan Referensi.
+2. Fase 1: Fondasi App dan Theme.
+3. Fase 2: Komponen Reusable Dasar.
+4. Fase 3: Login Screen.
+5. Fase 4: Pintu Saya Screen.
+6. Fase 5: Detail Pintu Screen.
+7. Fase 6: Visual Polish dan Fidelity Review.
+8. Fase 7: Cleanup Ringan.
+
+Setelah setiap fase selesai, lakukan cek visual singkat sebelum lanjut. Jangan menunggu semua screen selesai baru membandingkan dengan PDF.
 
 ## Kriteria Selesai Fase UI
 
@@ -302,3 +587,53 @@ Web:
 - Bottom nav tampil sesuai desain, minimal tab `Doors` aktif.
 - Tampilan tidak overflow pada ukuran mobile 390x844.
 - Web tetap bisa dibuka dengan layout mobile-centered.
+
+## Checklist Review Visual Terhadap PDF
+
+Sebelum fase UI dianggap selesai, bandingkan hasil aplikasi dengan render PDF berikut:
+
+- Page 1: Login screen.
+- Page 2: Pintu Saya screen.
+- Page 3: Detail Pintu screen.
+
+Checklist umum:
+
+- Safe area atas terasa sama dengan referensi.
+- Padding horizontal konsisten, sekitar 24-28 px.
+- Headline besar dan bold seperti PDF.
+- Warna teks sekunder tidak terlalu gelap.
+- Radius card besar dan input mendekati referensi.
+- Border list item dan input tipis, bukan terlalu kontras.
+- Tombol utama hitam penuh dengan text putih.
+- Badge berbentuk pill dengan warna sesuai status.
+- Tidak ada elemen tambahan yang mengganggu kemiripan.
+
+Checklist Login:
+
+- `GARPIT` berada di atas, besar, warna navy gelap.
+- Tagline tepat di bawah brand.
+- Card ilustrasi perangkat berada sebelum section `Masuk`.
+- Section `Masuk` berada di bawah card, bukan di atas.
+- Input email dan password memakai border rounded.
+- Link `Lupa password?` rata kanan.
+- Tombol `Masuk` berada dekat bagian bawah screen.
+
+Checklist Pintu Saya:
+
+- Header berisi title, subtitle, dan avatar inisial `S`.
+- Access pass card memiliki ilustrasi reader di kanan.
+- Badge `Aktif` berada di bawah role.
+- Section `Akses tersedia` muncul sebelum daftar pintu.
+- Item `Main Entrance` tampil selected dengan border teal.
+- Status `Terkunci` dan `Terbuka` memakai pill sesuai referensi.
+- Bottom nav berada fixed di bawah dengan tab `Doors` aktif.
+
+Checklist Detail Pintu:
+
+- Back button berupa circle di kiri title.
+- Title `Main Entrance` dan subtitle berada di header.
+- Status card besar berisi ilustrasi reader, status, badge, dan caption.
+- Tombol `Open Door` hitam, `Lock Door` putih dengan border.
+- Card `Buka sementara` berisi pilihan `5m`, `15m`, `30m`, `Custom`.
+- Pilihan `5m` aktif secara default.
+- Card `Izin akses Anda` berada di bagian bawah dengan badge `Active`.

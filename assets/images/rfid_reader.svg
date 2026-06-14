@@ -1,0 +1,19 @@
+<svg width="190" height="305" viewBox="0 0 190 305" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="readerShadow" x="12" y="12" width="174" height="292" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="11" dy="10" stdDeviation="7" flood-color="#0A0C0F" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect x="48" y="50" width="130" height="238" rx="32" fill="#0A0C0F" opacity="0.2"/>
+  <g filter="url(#readerShadow)">
+    <rect x="30" y="32" width="130" height="238" rx="32" fill="#202222"/>
+    <rect x="65" y="69" width="60" height="7" rx="3.5" fill="#12C7B6"/>
+    <circle cx="95" cy="151" r="4" fill="#D8DADC"/>
+    <path d="M70 136C78 144 78 158 70 166L66 162C72 156 72 146 66 140L70 136Z" fill="#D7D8DA"/>
+    <path d="M58 128C71 141 71 161 58 174L54 170C65 159 65 143 54 132L58 128Z" fill="#D7D8DA"/>
+    <path d="M120 136C112 144 112 158 120 166L124 162C118 156 118 146 124 140L120 136Z" fill="#D7D8DA"/>
+    <path d="M132 128C119 141 119 161 132 174L136 170C125 159 125 143 136 132L132 128Z" fill="#D7D8DA"/>
+    <text x="95" y="239" text-anchor="middle" fill="#D9DADD" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" letter-spacing="-0.1">GARPIT</text>
+  </g>
+</svg>

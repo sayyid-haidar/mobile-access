@@ -1,0 +1,16 @@
+<svg width="460" height="315" viewBox="0 0 460 315" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="controllerShadow" x="10" y="24" width="440" height="278" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#061731" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#controllerShadow)">
+    <rect x="30" y="45" width="400" height="255" rx="42" fill="#202222"/>
+    <rect x="82" y="70" width="296" height="46" rx="12" fill="#080909"/>
+    <path d="M96 115C96 94.013 113.013 77 134 77H348C362.912 77 375 89.088 375 104V104" stroke="white" stroke-opacity="0.035" stroke-width="2"/>
+    <rect x="349" y="142" width="9" height="105" rx="4.5" fill="#12C7B6"/>
+    <text x="88" y="190" fill="#D9DADD" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" letter-spacing="0.2">GARPIT</text>
+    <text x="90" y="222" fill="#A9ADB2" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">AC1000</text>
+  </g>
+</svg>
