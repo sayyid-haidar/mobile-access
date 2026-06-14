@@ -6,7 +6,7 @@ import '../models/door_item.dart';
 import '../widgets/access_pass_card.dart';
 import '../widgets/door_list_item.dart';
 import '../widgets/garpit_bottom_nav.dart';
-import 'phase_one_placeholder_screen.dart';
+import 'door_detail_screen.dart';
 
 class DoorsScreen extends StatelessWidget {
   const DoorsScreen({super.key});
@@ -42,13 +42,8 @@ class DoorsScreen extends StatelessWidget {
   void _openDoorDetail(BuildContext context, DoorItem door) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (context) => GarpitAppFrame(
-          child: PhaseOnePlaceholderScreen(
-            title: door.title,
-            subtitle: 'Detail pintu dibuat di Fase 5.',
-            phaseLabel: 'Fase 5',
-          ),
-        ),
+        builder: (context) =>
+            GarpitAppFrame(child: DoorDetailScreen(door: door)),
       ),
     );
   }

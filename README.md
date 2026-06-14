@@ -7,7 +7,6 @@
     <img alt="Flutter" src="https://img.shields.io/badge/Flutter-UI%20Prototype-02569B?logo=flutter&logoColor=white" />
     <img alt="Dart" src="https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart&logoColor=white" />
     <img alt="Targets" src="https://img.shields.io/badge/Targets-Android%20%2B%20Web-12C7B6" />
-    <img alt="Status" src="https://img.shields.io/badge/Status-UI%20Phase%204-080A0F" />
   </p>
 </div>
 
@@ -19,27 +18,12 @@
 
 Prototype ini sudah bisa dijalankan di **Android** dan **Web** dari codebase Flutter yang sama.
 
-## Current Progress
-
-| Area | Status |
-| --- | --- |
-| Login screen | Done |
-| Dashboard `Pintu Saya` | Done |
-| Access pass card | Done |
-| Door list dummy | Done |
-| Fixed bottom navigation | Done |
-| Door detail screen | Next |
-| API/auth/session | Later |
-| Realtime door status | Later |
-
-Detail fase kerja ada di [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
-
 ## Preview Flow
 
 ```text
 Login
   -> Pintu Saya
-      -> Detail placeholder Fase 5
+      -> Detail Pintu
 ```
 
 ### Login
@@ -61,6 +45,13 @@ Login
   - `Logs`
   - `Profile`
 
+### Detail Pintu
+
+- Status lokal `Terkunci` / `Terbuka`.
+- Tombol `Open Door` dan `Lock Door`.
+- Pilihan durasi dummy `5m`, `15m`, `30m`, dan `Custom`.
+- Card `Izin akses Anda`.
+
 ## Tech Stack
 
 - [Flutter](https://flutter.dev/)
@@ -81,6 +72,7 @@ lib/
   screens/
     login_screen.dart
     doors_screen.dart
+    door_detail_screen.dart
     phase_one_placeholder_screen.dart
   widgets/
     access_device_illustration.dart

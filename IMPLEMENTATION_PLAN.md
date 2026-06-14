@@ -173,6 +173,8 @@ Definition of Done:
 
 ### Fase 5: Detail Pintu Screen
 
+Status: selesai.
+
 Tujuan:
 
 - Mengimplementasikan detail pintu sesuai Page 3 PDF.
@@ -195,10 +197,16 @@ Interaksi:
 
 Definition of Done:
 
-- Detail screen mirip Page 3 PDF.
-- Status lokal berubah tanpa API.
-- Durasi aktif terlihat jelas.
-- Layout tetap bisa discroll jika tinggi layar kecil.
+- [x] Detail screen mirip Page 3 PDF.
+- [x] Status lokal berubah tanpa API.
+- [x] Durasi aktif terlihat jelas.
+- [x] Layout tetap bisa discroll jika tinggi layar kecil.
+- [x] Tap back kembali ke `Pintu Saya`.
+- [x] Tap `Open Door` mengubah status lokal menjadi `Terbuka`.
+- [x] Tap `Lock Door` mengubah status lokal menjadi `Terkunci`.
+- [x] Tap `Custom` menampilkan snackbar placeholder.
+- [x] `flutter analyze` sukses.
+- [x] `flutter test` sukses.
 
 ### Fase 6: Visual Polish dan Fidelity Review
 

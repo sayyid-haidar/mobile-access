@@ -38,6 +38,13 @@ void main() {
     await tester.tap(find.text('Main Entrance'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Fase 5'), findsOneWidget);
+    expect(find.text('Aksi cepat'), findsOneWidget);
+    expect(find.text('Open Door'), findsOneWidget);
+    expect(find.text('Terkunci'), findsOneWidget);
+
+    await tester.tap(find.widgetWithText(FilledButton, 'Open Door'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Terbuka'), findsOneWidget);
   });
 }
