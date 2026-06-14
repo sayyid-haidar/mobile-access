@@ -31,10 +31,10 @@ class GarpitTextField extends StatelessWidget {
           label,
           style: textTheme.titleMedium?.copyWith(
             color: GarpitColors.textSecondary,
-            fontSize: 17,
+            fontSize: 14,
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 8),
         TextField(
           controller: controller,
           obscureText: obscureText,
@@ -42,19 +42,19 @@ class GarpitTextField extends StatelessWidget {
           textInputAction: textInputAction,
           style: textTheme.bodyLarge?.copyWith(
             color: GarpitColors.textPrimary,
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: textTheme.bodyLarge?.copyWith(
               color: GarpitColors.textSecondary,
-              fontSize: 20,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
             contentPadding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 22,
+              horizontal: 18,
+              vertical: 15,
             ),
             filled: true,
             fillColor: GarpitColors.background,

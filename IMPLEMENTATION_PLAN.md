@@ -106,6 +106,8 @@ Definition of Done:
 
 ### Fase 3: Login Screen
 
+Status: selesai.
+
 Tujuan:
 
 - Mengimplementasikan screen pertama sesuai Page 1 PDF.
@@ -126,11 +128,17 @@ Interaksi:
 
 Definition of Done:
 
-- Login screen mirip Page 1 PDF.
-- Form tidak overflow di tinggi 844.
-- Flow login dummy bisa lanjut ke dashboard.
+- [x] Login screen mirip Page 1 PDF.
+- [x] Form tidak overflow di tinggi 844 karena memakai scroll view.
+- [x] Flow login dummy bisa lanjut ke placeholder dashboard.
+- [x] Validasi lokal untuk email/password kosong tersedia.
+- [x] `Lupa password?` menampilkan snackbar placeholder.
+- [x] `flutter analyze` sukses.
+- [x] `flutter test` sukses.
 
 ### Fase 4: Pintu Saya Screen
+
+Status: selesai.
 
 Tujuan:
 
@@ -154,10 +162,14 @@ Interaksi:
 
 Definition of Done:
 
-- Screen `Pintu Saya` mirip Page 2 PDF.
-- Bottom navigation fixed di bawah.
-- List pintu bisa ditap tanpa error.
-- Tidak ada API/backend.
+- [x] Screen `Pintu Saya` mirip Page 2 PDF.
+- [x] Bottom navigation fixed di bawah.
+- [x] List pintu bisa ditap tanpa error.
+- [x] Tap `Main Entrance` membuka placeholder detail Fase 5.
+- [x] Tab selain `Doors` menampilkan snackbar placeholder.
+- [x] Tidak ada API/backend.
+- [x] `flutter analyze` sukses.
+- [x] `flutter test` sukses.
 
 ### Fase 5: Detail Pintu Screen
 

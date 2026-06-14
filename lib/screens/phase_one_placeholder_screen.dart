@@ -7,7 +7,16 @@ import '../widgets/garpit_button.dart';
 import '../widgets/garpit_text_field.dart';
 
 class PhaseOnePlaceholderScreen extends StatelessWidget {
-  const PhaseOnePlaceholderScreen({super.key});
+  const PhaseOnePlaceholderScreen({
+    super.key,
+    this.title = 'GARPIT',
+    this.subtitle = 'Komponen UI dasar siap',
+    this.phaseLabel = 'Fase 2',
+  });
+
+  final String title;
+  final String subtitle;
+  final String phaseLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +24,11 @@ class PhaseOnePlaceholderScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: const _PlaceholderContent(),
+          child: _PlaceholderContent(
+            title: title,
+            subtitle: subtitle,
+            phaseLabel: phaseLabel,
+          ),
         ),
       ),
     );
@@ -23,7 +36,15 @@ class PhaseOnePlaceholderScreen extends StatelessWidget {
 }
 
 class _PlaceholderContent extends StatelessWidget {
-  const _PlaceholderContent();
+  const _PlaceholderContent({
+    required this.title,
+    required this.subtitle,
+    required this.phaseLabel,
+  });
+
+  final String title;
+  final String subtitle;
+  final String phaseLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +55,14 @@ class _PlaceholderContent extends StatelessWidget {
       children: [
         const SizedBox(height: 70),
         Text(
-          'GARPIT',
+          title,
           style: textTheme.displayLarge?.copyWith(
             color: const Color(0xFF061731),
             fontSize: 44,
           ),
         ),
         const SizedBox(height: 12),
-        Text('Komponen UI dasar siap', style: textTheme.bodyLarge),
+        Text(subtitle, style: textTheme.bodyLarge),
         const SizedBox(height: 30),
         Container(
           width: double.infinity,
@@ -55,7 +76,7 @@ class _PlaceholderContent extends StatelessWidget {
             children: [
               const AccessDeviceIllustration(compact: true),
               const SizedBox(height: 18),
-              Text('Fase 2', style: textTheme.titleLarge),
+              Text(phaseLabel, style: textTheme.titleLarge),
               const SizedBox(height: 8),
               Text(
                 'Button, text field, badge, dan device illustration sudah tersedia.',

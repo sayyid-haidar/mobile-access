@@ -22,7 +22,7 @@ class GarpitButton extends StatelessWidget {
 
     return SizedBox(
       width: double.infinity,
-      height: 64,
+      height: 56,
       child: FilledButton(
         onPressed: onPressed,
         style: FilledButton.styleFrom(
@@ -38,7 +38,7 @@ class GarpitButton extends StatelessWidget {
           disabledForegroundColor: GarpitColors.textSecondary,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(16),
             side: BorderSide(
               color: isPrimary ? GarpitColors.textPrimary : GarpitColors.border,
               width: 1.5,

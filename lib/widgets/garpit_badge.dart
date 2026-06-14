@@ -24,12 +24,12 @@ class GarpitBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(999),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
         child: Text(
           label,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
             color: colors.foreground,
-            fontSize: 15,
+            fontSize: 12,
           ),
         ),
       ),
